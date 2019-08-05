@@ -1,3 +1,0 @@
---
--- Queries for the monster database
---
