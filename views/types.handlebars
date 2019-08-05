@@ -1,0 +1,37 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+	<h1>Types of monsters</h1>
+    <h2>Current types</h2>
+	<div class = "row">
+		<div class="col l6 m6 s12">
+		    <table>
+		        <thead> 
+		            <th>Type name</th> 
+		        </thead> 
+			    <tbody>
+			        {{#each types}} 
+			        <tr> 
+			            <td>{{type}}</td> 
+			        </tr> 
+			        {{/each}} 
+			    </tbody> 
+		    </table>
+		</div>
+	</div>
+
+	<h2>Add a new type of monster</h2>
+    <div class="row">
+	    <form class="add-form col l8 m8 s12" id="addtype" action="/types" method="post">
+	    	<div class="row">
+	    		<div class="input-field col l6 m6 s12">
+				    <b>Type name:</b>
+				    <input type="text" name="type">
+				</div>
+			</div>
+		    <input class="btn form-btn" type="submit" value="Add type">
+	 	</form>
+	</div>
+
+</html>

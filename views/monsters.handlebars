@@ -1,0 +1,98 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+	<h1>Monsters</h1>
+    <h2>Current monsters</h2>
+    <div class="row">
+    	<!--- form does not submit directly, the button handles all interaction with backend -->
+    	<form class="filter col s6" id='filter_monsters' action='' method=''>
+			<b>Filter by type:</b>
+			<div class="row">
+		    	<div class="input-field col l4 m4 s4">
+				    <select class="browser-default" id='type_filter' name="type"> 
+				        {{#each types}}
+				        <option value="{{id}}">{{type}}</option>
+				        {{/each}}
+				    </select>
+				</div>
+				<!--- ISSUE: Clicking this button drops the CSS For some reason... --->
+				<div class="input-field col l4 m4 s4">
+					<button class="btn form-btn" type="button" onclick="filterMonstersByType()">FILTER</button>					
+				</div>
+			</div>
+		</form>
+    </div>
+	    
+
+    <table>
+        <thead> 
+            <th>Name</th> 
+            <th>Color</th>
+            <th>Type</th>
+            <th>Habitat</th>
+            <th>Scariness</th>  
+        </thead> 
+	    <tbody>
+	        {{#each monsters}} 
+	        <tr> 
+	            <td>{{name}}</td> 
+	            <td>{{color}}</td> 
+	            <td>{{type}}</td>
+	            <td>{{habitat}}</td>
+	            <td>{{scariness}}</td>
+	            <td><a class = "green-link" href="/monsters/{{id}}"><i class="tiny material-icons">edit</i>UPDATE</a></td>
+	            <td><button class="btn-small" onclick="deleteMonster({{id}})">DELETE</button></td>
+            	
+	        </tr> 
+	        {{/each}} 
+	    </tbody> 
+    </table> 
+
+    <h2>Add a new monster</h2>
+    <div class="row">
+	    <form class="add-form col s12" id="addmonster" action="/monsters" method="post">
+	    	<div class="row">
+	    		<div class="input-field col l6 m6 s12">
+				    <b>Name:</b> 
+				    <input type="text" id="name" name="name">
+				</div>
+			    <div class="input-field col l3 m3 s12">
+				    <b>Color:</b> 
+				    <input type="text" name="color">
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col l3 m3 s12">
+					<b>Type:</b> 
+					<select class="browser-default" name="type">
+				        {{#each types}}
+				        <option value="{{id}}">{{type}}</option>
+				        {{/each}}
+				    </select>
+				</div>
+				<div class="input-field col l3 m3 s12">
+					<b>Habitat:</b> 
+				    <select class="browser-default" name="habitat"> 
+				        {{#each habitats}}
+				        <option value="{{id}}">{{habitat}}</option>
+				        {{/each}}
+				    </select>
+				</div>
+
+		    	<div class="input-field col l3 m3 s12">
+		    		<b>Scariness rating:</b> 
+		    		<select class="browser-default" name="scariness">
+					      <option value="1">1 (least)</option>
+					      <option value="2">2</option>
+					      <option value="3">3</option>
+					      <option value="4">4</option>
+					      <option value="5">5 (most)</option>
+		    		</select>
+		    	</div>
+		    </div>    
+		    <input class="btn" type="submit" value="Add monster">
+	 	</form>
+	</div>
+
+</html>

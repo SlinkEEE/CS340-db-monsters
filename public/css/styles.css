@@ -1,0 +1,92 @@
+nav {
+  background-color: #287434;
+}
+
+nav ul a:hover {
+  background-color: #3F8A4B;
+}
+
+.current-nav {
+  background-color: #41A349;
+  
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+  color: indigo;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+.caption {
+  color: #78909c;
+  font-size: 0.8rem;
+}
+
+.green-link {
+  color: green;
+}
+
+.green-link:hover {
+  text-decoration: underline;
+}
+
+.my-link:hover {
+  text-decoration: underline;
+}
+
+.section-heading {
+  font-size: 1.5rem;
+  line-height: 110%;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.with-bullets {
+	list-style-type: square !important;
+	list-style-position: inside;
+}
+
+.page-footer {
+  margin-top: 2.8rem;
+  background-color: #287434;
+}
+
+blockquote {
+  border-left: 5px solid #0277bd;
+}
+
+.btn, .btn-large, .btn-small {
+  color: #fff !important;
+  background-color: indigo;
+}
+
+.form-btn {
+  height: 42px;  
+}
+
+
+.btn:hover, .btn-large:hover, .btn-small:hover{
+  background-color: purple;
+}
+
+.btn:focus, .btn-large:focus{
+  background-color: #d84315;
+}
+
+.add-form {
+  outline: solid lightgray 1px;
+  padding: 2% 5% 2% 5% !important;
+  background-color: #f2f2f2;
+}
+
+.filter {
+
+}

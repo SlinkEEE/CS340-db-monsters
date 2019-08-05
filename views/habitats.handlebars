@@ -1,0 +1,44 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+	<h1>Habitats</h1>
+    <h2>Current habitats</h2>
+
+    <div class = "row">
+    	<div class="col l8 m8 s12">
+		    <table>
+		        <thead> 
+		            <th>Habitat</th> 
+		            <th>Climate</th> 
+		        </thead> 
+			    <tbody>
+			        {{#each habitats}} 
+			        <tr> 
+			            <td>{{habitat}}</td> 
+			            <td>{{climate}}</td> 
+			        </tr> 
+			        {{/each}} 
+			    </tbody> 
+		    </table> 
+		</div>
+	</div>
+
+	<h2>Add a new habitat</h2>
+    <div class="row">
+	    <form class="add-form col l10 m10 s12" id="addhabitat" action="/habitats" method="post">
+	    	<div class="row">
+	    		<div class="input-field col l6 m6 s12">
+				    <b>Habitat name:</b>
+				    <input type="text" name="name">
+				</div>
+				<div class="input-field col l6 m6 s12">
+				    <b>Climate:</b>
+				    <input type="text" name="climate">
+				</div>
+			</div>
+		    <input class="btn form-btn" type="submit" value="Add habitat">
+	 	</form>
+	</div>
+
+</html>

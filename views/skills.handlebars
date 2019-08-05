@@ -1,0 +1,73 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+	<h1>Skills</h1>
+    <h2>Current skills</h2>
+
+    <div class = "row">
+    	<div class="col l8 m8 s12">
+		    <table>
+		        <thead> 
+		            <th>Skill</th> 
+		            <th>Difficulty (1 - 5)</th> 
+		        </thead> 
+			    <tbody>
+			        {{#each skills}} 
+			        <tr> 
+			            <td>{{skill}}</td> 
+			            <td>{{difficulty}}</td> 
+			        </tr> 
+			        {{/each}} 
+			    </tbody> 
+		    </table> 
+		    <br>
+		</div>
+	</div>
+
+	<h2>Add a new skill</h2>
+    <div class="row">
+	    <form class="add-form col l10 m10 s12" id="addskill" action="/skills" method="post">
+	    	<div class="row">
+	    		<div class="input-field col l6 m6 s12">
+				    <b>Skill name:</b>
+				    <input type="text" name="name">
+				</div>
+				<div class="input-field col l6 m6 s12">
+				    <b>Difficulty:</b>
+				    <select class="browser-default" name="difficulty">
+					      <option value="1">1 (least)</option>
+					      <option value="2">2</option>
+					      <option value="3">3</option>
+					      <option value="4">4</option>
+					      <option value="5">5 (most)</option>
+		    		</select>
+				</div>
+			</div>
+		    <input class="btn form-btn" type="submit" value="Add skill">
+	 	</form>
+	</div>
+
+	<h2>Which monsters have which skills?</h2>
+	<div class = "row">
+    	<div class="col l8 m8 s12">
+    		<table>
+    			<thead>
+    				<th>Monster name</th>
+    				<th>Skill</th>
+    			</thead>
+    			<tbody>
+    				{{#each monsters_with_skills}} 
+			        <tr> 
+			            <td>{{monster}}</td> 
+			            <td>{{skill}}</td> 
+			        </tr> 
+			        {{else}}
+        			<b> No skilled monsters were found! They need night school. </b>
+        			{{/each}}
+    			</tbody>
+    		</table>
+    	</div>
+    </div>
+
+</html>
