@@ -3,8 +3,8 @@
 {{this}}
 {{/each}}
 	<h1>Weaknesses</h1>
-    <h2>Current weaknesses</h2>
 
+    <h2>Current weaknesses</h2>
     <div class = "row">
     	<div class="col l6 m6 s12">
 		    <table>
@@ -57,5 +57,31 @@
     		</table>
     	</div>
     </div>
+
+    <h2>Add a new monster/weakness association</h2>
+    <div class="row">
+	    <form class="add-form col l10 m10 s12" id="add_monsters_weaknesses" action="/weaknesses" method="post">
+	    	<div class="row">
+	    		<div class="input-field col l6 m6 s12">
+				    <b>Monster:</b>
+				    <select class="browser-default" name="monster"> 
+					    {{#each monsters}}
+							<option value="{{id}}">{{name}}</option>
+						{{/each}}
+					</select>
+				</div>
+				<div class="input-field col l6 m6 s12">
+				    <b>Weakness:</b>
+				    <select class="browser-default" name="weakness"> 
+					    {{#each weaknesses}}
+							<option value="{{id}}">{{weakness}}</option>
+						{{/each}}
+					</select>
+				</div>
+			</div>
+		    <input class="btn form-btn" type="submit" value="SUBMIT">
+	 	</form>
+	</div>
+
 
 </html>
