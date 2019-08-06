@@ -58,22 +58,43 @@ module.exports = function(){
 
     /* Adds a weakness and redirects to the Weaknesses page after adding */
     router.post('/', function(req, res){
-        console.log(req.body)
+        console.log(req.body);
+        
+        var name = req.body.name;
+        console.log("name is " + name);
         var mysql = req.app.get('mysql');
-        var sql = "INSERT INTO weaknesses (name) VALUES (?)";
-        var inserts = [req.body.name];
-        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
-            if(error){
-                console.log(JSON.stringify(error))
-                res.write(JSON.stringify(error));
-                res.end();
-            }else{
-                res.redirect('/weaknesses');
-            }
-        });
+        if(name == null) {
+            var monster = req.body.monster
+            var weakness = req.body.weakness
+            var sql = "INSERT INTO monsters_weaknesses (monster_id, weakness_id) VALUES (?,?)";
+            var inserts = [monster, weakness];
+            sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+                if(error){
+                    console.log(error)
+                }
+                else{
+                    res.redirect('/weaknesses');
+                }
+            });
+        }
+        else {
+            var mysql = req.app.get('mysql');
+            var sql = "INSERT INTO weaknesses (name) VALUES (?)";
+            var inserts = [req.body.name];
+
+            sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+                if(error){
+                    console.log(JSON.stringify(error));
+                    res.write(JSON.stringify(error));
+                    res.end();
+                }
+                else{
+                    res.redirect('/weaknesses');
+                }
+            });
+        } 
+        
     });
-
-
 
     /* Delete a monster's weakness record
     /* This route will accept a HTTP DELETE request in the form /monster_id/{{monster_id}}/weakness_id/{{weakness_id}}
@@ -83,7 +104,7 @@ module.exports = function(){
         console.log(req.params.monster_id)
         console.log(req.params.weakness_id)
         var mysql = req.app.get('mysql');
-        var sql = "DELETE FROM monsters_weaknesses WHERE monster_id = : ? AND weakness_id = ?";
+        var sql = "DELETE FROM monsters_weaknesses WHERE monster_id = ? AND weakness_id = ?";
         var inserts = [req.params.monster_id, req.params.weakness_id];
         sql = mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
@@ -92,11 +113,31 @@ module.exports = function(){
                 res.status(400); 
                 res.end(); 
             }else{
-                //res.status(202).end();
-                res.redirect('/weaknesses');
+                res.status(202).end();
             }
         })
     })
+
+
+    /* Associates a weakness with a monster, then reloads page after adding */
+    // BUG -- this only works if I get rid of the router.post for adding a weakness! Why?
+    // for now I've combined this with the router.post above
+    /*router.post('/', function(req, res){
+        console.log(req.body)
+        var mysql = req.app.get('mysql');
+        var monster = req.body.monster
+        var weakness = req.body.weakness
+        var sql = "INSERT INTO monsters_weaknesses (monster_id, weakness_id) VALUES (?,?)";
+        var inserts = [monster, weakness];
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                console.log(error)
+            }
+          });
+
+        res.redirect('/weaknesses');
+    });*/
+
 
     return router;
 }();
