@@ -3,8 +3,13 @@
 {{this}}
 {{/each}}
 	<h1>Skills</h1>
-    <h2>Current skills</h2>
+	<div class="row">
+		<div class = "col l10 m10 s12">
+			<p class = "intro-paragraph">Not all monsters have skills, but many do -- monsters are known to enjoy going to night school to better themselves. The different scaring skills the monsters have carry a difficulty rating, with 1 being the least difficult and 5 being the most difficult.</p>
+		</div>
+	</div>
 
+    <h2>Current skills</h2>
     <div class = "row">
     	<div class="col l8 m8 s12">
 		    <table>
@@ -27,7 +32,7 @@
 
 	<h2>Add a new skill</h2>
     <div class="row">
-	    <form class="add-form col l10 m10 s12" id="addskill" action="/skills" method="post">
+	    <form class="add-form col l10 m10 s12" id="addskill" action="/skills/add" method="post">
 	    	<div class="row">
 	    		<div class="input-field col l6 m6 s12">
 				    <b>Skill name:</b>
@@ -69,5 +74,31 @@
     		</table>
     	</div>
     </div>
+
+
+        <h2>Add a new monster/skill association</h2>
+    <div class="row">
+	    <form class="add-form col l10 m10 s12" id="add_monsters_skills" action="/skills/addRelationship" method="post">
+	    	<div class="row">
+	    		<div class="input-field col l6 m6 s12">
+				    <b>Monster:</b>
+				    <select class="browser-default" name="monster"> 
+					    {{#each monsters}}
+							<option value="{{id}}">{{name}}</option>
+						{{/each}}
+					</select>
+				</div>
+				<div class="input-field col l6 m6 s12">
+				    <b>Skill:</b>
+				    <select class="browser-default" name="skill"> 
+					    {{#each skills}}
+							<option value="{{id}}">{{skill}}</option>
+						{{/each}}
+					</select>
+				</div>
+			</div>
+		    <input class="btn form-btn" type="submit" value="SUBMIT">
+	 	</form>
+	</div>
 
 </html>

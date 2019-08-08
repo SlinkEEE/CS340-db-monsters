@@ -3,6 +3,11 @@
 {{this}}
 {{/each}}
 	<h1>Weaknesses</h1>
+	<div class="row">
+		<div class = "col l10 m10 s12">
+			<p class = "intro-paragraph">Monsters are by nature quite tough and resilient, but some monsters have developed weaknesses due to traumatic childhood memories. Many monsters work hard to better themselves and overcome their weaknesses. Therefore weakness relationships can be deleted when appropriate.</p>
+		</div>
+	</div>
 
     <h2>Current weaknesses</h2>
     <div class = "row">
@@ -24,7 +29,7 @@
 
 	<h2>Add a new weakness</h2>
     <div class="row">
-	    <form class="add-form col l10 m10 s12" id="addweakness" action="/weaknesses" method="post">
+	    <form class="add-form col l10 m10 s12" id="addweakness" action="/weaknesses/add" method="post">
 	    	<div class="row">
 	    		<div class="input-field col l6 m6 s12">
 				    <b>Weakness name:</b>
@@ -37,7 +42,7 @@
 
 	<h2>Which monsters have which weaknesses?</h2>
 	<div class = "row">
-    	<div class="col l6 m6 s12">
+    	<div class="col l8 m8 s12">
     		<table>
     			<thead>
     				<th>Monster name</th>
@@ -60,7 +65,7 @@
 
     <h2>Add a new monster/weakness association</h2>
     <div class="row">
-	    <form class="add-form col l10 m10 s12" id="add_monsters_weaknesses" action="/weaknesses" method="post">
+	    <form class="add-form col l10 m10 s12" id="add_monsters_weaknesses" action="/weaknesses/addRelationship" method="post">
 	    	<div class="row">
 	    		<div class="input-field col l6 m6 s12">
 				    <b>Monster:</b>
