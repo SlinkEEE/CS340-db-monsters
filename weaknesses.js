@@ -56,51 +56,55 @@ module.exports = function(){
         }
     });
 
-    /* Adds a weakness and redirects to the Weaknesses page after adding */
-    router.post('/', function(req, res){
-        console.log(req.body);
-        
+    /* Adds a new weakness, redirects to the Weaknesses page after adding */
+    router.post('/add', function(req, res){        
         var name = req.body.name;
-        console.log("name is " + name);
+        console.log("adding new weakness: " + name);
+        
         var mysql = req.app.get('mysql');
-        if(name == null) {
-            var monster = req.body.monster
-            var weakness = req.body.weakness
-            var sql = "INSERT INTO monsters_weaknesses (monster_id, weakness_id) VALUES (?,?)";
-            var inserts = [monster, weakness];
-            sql = mysql.pool.query(sql, inserts, function(error, results, fields){
-                if(error){
-                    console.log(error)
-                }
-                else{
-                    res.redirect('/weaknesses');
-                }
-            });
-        }
-        else {
-            var mysql = req.app.get('mysql');
-            var sql = "INSERT INTO weaknesses (name) VALUES (?)";
-            var inserts = [req.body.name];
+        var sql = "INSERT INTO weaknesses (name) VALUES (?)";
+        var inserts = [req.body.name];
 
-            sql = mysql.pool.query(sql,inserts,function(error, results, fields){
-                if(error){
-                    console.log(JSON.stringify(error));
-                    res.write(JSON.stringify(error));
-                    res.end();
-                }
-                else{
-                    res.redirect('/weaknesses');
-                }
-            });
-        } 
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields) {
+            if(error){
+                console.log(JSON.stringify(error));
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            else{
+                res.redirect('/weaknesses');
+            }
+        });
+    });
+
+    /* Adds a weakness/mosnter relationship, redirects to the Weaknesses page after adding */
+    router.post('/addRelationship', function(req, res){
+        var monster = req.body.monster;
+        var weakness = req.body.weakness;
+        console.log("adding relationship:" + monster + " and " + weakness);
+        
+        var mysql = req.app.get('mysql');
+        var sql = "INSERT INTO monsters_weaknesses (monster_id, weakness_id) VALUES (?,?)";
+        var inserts = [monster, weakness];
+        
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                console.log(error)
+            }
+            else{
+                res.redirect('/weaknesses');
+            }
+        });
         
     });
+
+
+
 
     /* Delete a monster's weakness record
     /* This route will accept a HTTP DELETE request in the form /monster_id/{{monster_id}}/weakness_id/{{weakness_id}}
     /*  -- which is sent by the AJAX form */
     router.delete('/monster_id/:monster_id/weakness_id/:weakness_id', function(req, res){
-        //console.log(req) //I used this to figure out where did pid and cid go in the request
         console.log(req.params.monster_id)
         console.log(req.params.weakness_id)
         var mysql = req.app.get('mysql');
@@ -119,24 +123,7 @@ module.exports = function(){
     })
 
 
-    /* Associates a weakness with a monster, then reloads page after adding */
-    // BUG -- this only works if I get rid of the router.post for adding a weakness! Why?
-    // for now I've combined this with the router.post above
-    /*router.post('/', function(req, res){
-        console.log(req.body)
-        var mysql = req.app.get('mysql');
-        var monster = req.body.monster
-        var weakness = req.body.weakness
-        var sql = "INSERT INTO monsters_weaknesses (monster_id, weakness_id) VALUES (?,?)";
-        var inserts = [monster, weakness];
-        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
-            if(error){
-                console.log(error)
-            }
-          });
 
-        res.redirect('/weaknesses');
-    });*/
 
 
     return router;

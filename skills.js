@@ -56,11 +56,15 @@ module.exports = function(){
     });
 
     /* Adds a skill and redirects to the Skills page after adding */
-    router.post('/', function(req, res){
-        console.log(req.body)
+    router.post('/add', function(req, res){
+        var name = req.body.name;
+        var difficulty = req.body.difficulty;
+        console.log("adding new skill: " + name);
+
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO skills (name, difficulty) VALUES (?,?)";
-        var inserts = [req.body.name, req.body.difficulty];
+        var inserts = [name, difficulty];
+        
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
@@ -71,6 +75,27 @@ module.exports = function(){
             }
         });
     });
+
+    /* Adds a monster/skill relationship and redirects to the Skills page after adding */
+    router.post('/addRelationship', function(req, res){
+        var monster = req.body.monster;
+        var skill = req.body.skill;
+        console.log("adding relationship:" + monster + " and " + skill);
+
+        var mysql = req.app.get('mysql');
+        var sql = "INSERT INTO monsters_skills (monster_id, skill_id) VALUES (?,?)";
+        var inserts = [monster, skill];
+        
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                console.log(error)
+            }
+            else{
+                res.redirect('/skills');
+            }
+        });
+    });
+
 
     return router;
 }();
