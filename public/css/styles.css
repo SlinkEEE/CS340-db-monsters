@@ -13,6 +13,7 @@ nav ul a:hover {
 
 h1 {
   font-size: 2.5rem;
+  margin-bottom: 0.8rem;
 }
 
 h2 {
@@ -26,13 +27,18 @@ h3 {
   font-size: 1.25rem;
 }
 
+.intro-paragraph {
+  font-size: 1.15rem;
+}
+
 .caption {
   color: #78909c;
   font-size: 0.8rem;
 }
 
 .green-link {
-  color: green;
+  color: green !important;
+  font-weight: bolder;
 }
 
 .green-link:hover {

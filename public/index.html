@@ -1,10 +1,41 @@
 <html>
 <head>
-  <title> Monsters DB</title>
+  <title>Monster Tracker</title>
+  <meta charset="UTF-8">
+  <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Imported stylesheets here-->
+    <link type="text/css" rel="stylesheet" href="/css/materialize.css"  media="screen,projection"/>
+    <!--Our custom stylesheet here-->
+    <link type="text/css" rel="stylesheet" href="/css/styles.css" type="text/css">
+    <!--Include google material icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 </head>
+
 <body>
-  <h2> Sheila attempting to reconfigure the Wolford example files...</h2>
-  <h4> Menu of operations</h4>
+  <header>
+  <nav>
+  <div class="container">
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo">Monster DB</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/monsters">Monsters</a></li>
+      <li><a href="/types">Types</a></li>
+      <li><a href="/habitats">Habitats</a></li>
+      <li><a href="/skills">Skills</a></li>
+      <li><a href="/weaknesses">Weaknesses</a></li>
+    </ul>
+  </div>
+  </div>
+  </nav>
+  </header>
+
+  <div class="container">
+
+  <h1>Hello, Monsters</h1>
+
+  <h2>WOLFORD MENU - to be deleted once project is done</h2>
   <ul>
     <li> <a href='/people'>List, Add, Update and Delete Persons (perform
         Create, Read, Update, Delete operations on a single entity) and filter
@@ -12,38 +43,34 @@
     <li> <a href='/people_certs'>Change Certifications for a Person (change M-to-M relationships)</a></li>
     <li> <a href='/people/1'>Change Homeworld of a Person (change 1-to-M
         relationships)</a></li>
-        <li> <a href='/monsters'>Monsters</a></li>
-        <li> <a href='/types'>Types</a></li>
-        <li> <a href='/habitats'>Habitats</a></li>
-        <li> <a href='/skills'>Skills</a></li>
-        <li> <a href='/weaknesses'>Weaknesses</a></li>
+
   </ul>
   <h2>Pages in our project:</h2>
     <ul>
-      <li class="index-link"><a href="/monsters">Monsters</a></li>
+      <li><a class="green-link" href="/monsters">Monsters</a></li>
         <ul>
           <li class="with-bullets">View all monsters</li>
           <li class="with-bullets">Update/delete existing monsters</li>
           <li class="with-bullets">Add a new monster</li>
         </ul>
-      <li class="index-link"><a href="/types">Types</a></li>
+      <li><a class="green-link" href="/types">Types</a></li>
         <ul>
           <li class="with-bullets">View all types of monsters</li>
           <li class="with-bullets">Add a new type</li>
         </ul>
-      <li class="index-link"><a href="/habitats">Habitats</a></li>
+      <li><a class="green-link" href="/habitats">Habitats</a></li>
         <ul>
           <li class="with-bullets">View all habitats for monsters</li>
           <li class="with-bullets">Add a new habitat</li>
         </ul>
-      <li class="index-link"><a href="/skills">Skills</a></li>
+      <li><a class="green-link"href="/skills">Skills</a></li>
         <ul>
           <li class="with-bullets">View all monster skills</li>
           <li class="with-bullets">Add a new skill</li>
           <li class="with-bullets">View which monsters have which skills</li>
           <li class="with-bullets">Associate a monster with a skill</li>
         </ul>
-      <li class="index-link"><a href="/weaknesses">Weaknesses</a></li>
+      <li><a class="green-link" href="/weaknesses">Weaknesses</a></li>
         <ul>
           <li class="with-bullets">View all monster weaknesses</li>
           <li class="with-bullets">Add a new weakness</li>
@@ -52,7 +79,37 @@
         </ul>
     </ul>
   <br/>
+
+  </div>
 </body>
+
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 m6 s12">
+        <h5 class="white-text">Why monsters?</h5>
+       <ul class="grey-text text-lighten-4">
+          <li class="with-bullets">Sheila reads a lot of comics</li>
+          <li class="with-bullets">Talking about dragons > studying</li>
+          <li class="with-bullets">When in doubt, design with tentacles</li>
+      </div>
+      <div class="col l5 offset-l1 m6 s12">
+        <h5 class="white-text">Other famous monsters</h5>
+        <ul>
+          <li><a class="my-link grey-text text-lighten-3" href="https://www.pixar.com/feature-films/monsters-university"><i class="tiny material-icons right">launch</i>Monsters University</a></li>
+          <li><a class="my-link grey-text text-lighten-3" href="https://www.spacejam.com/archive/spacejam/movie/jam.htm"><i class="tiny material-icons right">launch</i>Retro MonSTARS</a></li>
+          <li><a class="my-link grey-text text-lighten-3" target="_blank" href="https://littlemonsters.com/"><i class="tiny material-icons right">launch</i>Lady Gaga: Little Monsters</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+    CS340 - Summer 2019 - Sheila Babayan & Rene Arana
+    </div>
+  </div>
+</footer>
+
 </html>
 
 
