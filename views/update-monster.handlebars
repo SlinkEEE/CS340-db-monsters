@@ -1,0 +1,59 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+	<h1>Update a monster</h1>
+
+  <h2>Updating {{monster.name}}...</h2>
+  <div class="row">
+  	<form class="add-form col s12" id="update-monster" action="/monsters" method="post">
+  		<div class="row">
+  			<div class="input-field col l6 m6 s12">
+  				<b>Name:</b> 
+			 		<input type="text" name="name" value="{{monster.name}}">
+  			</div>
+
+  			<div class="input-field col l3 m3 s12">
+			    <b>Color:</b> 
+			    <input type="text" name="color" value="{{monster.color}}">
+				</div>
+  		</div>
+
+  		<div class="row">
+				<div class="input-field col l3 m3 s12">
+					<b>Type:</b> 
+					<select class="browser-default" name="type" id="type-selector">
+			        {{#each types}}
+			        <option value="{{id}}">{{type}}</option>
+			        {{/each}}
+			    </select>
+			  </div>
+			  <div class="input-field col l3 m3 s12">
+					<b>Habitat:</b> 
+					<select class="browser-default" name="habitat" id="habitat-selector">
+			        {{#each habitats}}
+			        <option value="{{id}}">{{habitat}}</option>
+			        {{/each}}
+			    </select>
+			  </div>
+			  <div class="input-field col l3 m3 s12">
+	    		<b>Scariness rating:</b> 
+	    		<select class="browser-default" name="scariness" value="{{monster.scariness}}">
+				      <option value="1">1 (least)</option>
+				      <option value="2">2</option>
+				      <option value="3">3</option>
+				      <option value="4">4</option>
+				      <option value="5">5 (most)</option>
+	    		</select>
+	    	</div>
+	    </div>
+
+	    <button class="btn" onclick="updateMonster({{monster.id}})">UPDATE</button>
+	  </form>
+
+		<script defer>selectType({{monster.type}});</script>
+		<script defer>selectHabitat({{monster.habitat}});</script>
+
+  </div>
+
+</html>

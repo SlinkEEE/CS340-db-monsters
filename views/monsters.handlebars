@@ -49,7 +49,6 @@
 	            <td>{{scariness}}</td>
 	            <td><a class = "green-link" href="/monsters/{{id}}"><i class="tiny material-icons">edit</i>UPDATE</a></td>
 	            <td><button class="btn-small" onclick="deleteMonster({{id}})">DELETE</button></td>
-            	
 	        </tr> 
 	        {{/each}} 
 	    </tbody> 
@@ -57,7 +56,7 @@
 
     <h2>Add a new monster</h2>
     <div class="row">
-	    <form class="add-form col s12" id="addmonster" action="/monsters" method="post">
+	    <form class="add-form col s12" id="addmonster" action="/monsters/add" method="post">
 	    	<div class="row">
 	    		<div class="input-field col l6 m6 s12">
 				    <b>Name:</b> 
