@@ -91,7 +91,7 @@ INSERT INTO weaknesses (name) VALUES (:name);
 --
 
 -- get monsters' names to populate a dropdown for associating with a skill/weakness
-SELECT M.id, M.name AS monster FROM monsters M; 
+SELECT M.id AS id, M.name FROM monsters M; 
 
 -- get skill names to populate a dropdown for associating with a monster
 SELECT S.id, S.name AS skill FROM skills S;

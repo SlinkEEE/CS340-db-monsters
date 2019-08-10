@@ -3,7 +3,7 @@ module.exports = function(){
     var router = express.Router();
 
     function getMonsters(res, mysql, context, complete){
-        mysql.pool.query("SELECT M.id as id, M.name, M.color, T.name AS type, H.name AS habitat, M.scariness FROM monsters M INNER JOIN types T ON M.type = T.id INNER JOIN habitats H ON M.habitat = H.id", function(error, results, fields){
+        mysql.pool.query("SELECT M.id AS id, M.name FROM monsters M", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
