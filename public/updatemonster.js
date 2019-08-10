@@ -9,10 +9,32 @@ function updateMonster(id){
     })
 };
 
+
 function selectType(id){
-    $("#type-selector").val(id);
+
+    if (id == null) {
+
+        $("#type-selector").val(0);
+    }
+    else {
+
+        $("#type-selector").val(id);
+    }
 }
 
 function selectHabitat(id){
-    $("#habitat-selector").val(id);
+
+    if (id == null) {
+
+        $("#habitat-selector").val(0);
+    }
+    else {
+
+        $("#habitat-selector").val(id);
+    }
+    
+}
+
+function selectScariness(id){
+    $("#scariness-selector").val(id);
 }

@@ -71,7 +71,8 @@
 				<div class="input-field col l3 m3 s12">
 					<b>Type:</b> 
 					<select class="browser-default" name="type">
-				        {{#each types}}
+						<option value="0">NULL</option>
+				        {{#each types}}				     
 				        <option value="{{id}}">{{type}}</option>
 				        {{/each}}
 				    </select>
@@ -79,6 +80,7 @@
 				<div class="input-field col l3 m3 s12">
 					<b>Habitat:</b> 
 				    <select class="browser-default" name="habitat"> 
+				    	<option value="0">NULL</option>
 				        {{#each habitats}}
 				        <option value="{{id}}">{{habitat}}</option>
 				        {{/each}}

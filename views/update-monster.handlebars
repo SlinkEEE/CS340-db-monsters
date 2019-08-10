@@ -23,22 +23,24 @@
 				<div class="input-field col l3 m3 s12">
 					<b>Type:</b> 
 					<select class="browser-default" name="type" id="type-selector">
-			        {{#each types}}
-			        <option value="{{id}}">{{type}}</option>
-			        {{/each}}
-			    </select>
+						<option value="0">NULL</option>
+				        {{#each types}}
+				        <option value="{{id}}">{{type}}</option>
+				        {{/each}}
+			    	</select>
 			  </div>
 			  <div class="input-field col l3 m3 s12">
 					<b>Habitat:</b> 
 					<select class="browser-default" name="habitat" id="habitat-selector">
-			        {{#each habitats}}
-			        <option value="{{id}}">{{habitat}}</option>
-			        {{/each}}
+						<option value="0">NULL</option>
+				        {{#each habitats}}
+				        <option value="{{id}}">{{habitat}}</option>
+				        {{/each}}
 			    </select>
 			  </div>
 			  <div class="input-field col l3 m3 s12">
 	    		<b>Scariness rating:</b> 
-	    		<select class="browser-default" name="scariness" value="{{monster.scariness}}">
+	    		<select class="browser-default" name="scariness" value="{{monster.scariness}}" id="scariness-selector">
 				      <option value="1">1 (least)</option>
 				      <option value="2">2</option>
 				      <option value="3">3</option>
@@ -53,6 +55,7 @@
 
 		<script defer>selectType({{monster.type}});</script>
 		<script defer>selectHabitat({{monster.habitat}});</script>
+		<script defer>selectScariness({{monster.scariness}});</script>
 
   </div>
 
